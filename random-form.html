@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Perference form</title>
+<style type="text/css">
+fieldset {
+  width: 350px;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: left;}
+  legend {
+  background-color: #efefef;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  padding: 10px 20px;
+  text-align: left;
+  text-transform: uppercase;}
+input {
+  font-size: 120%;
+  color: #5a5854;
+  background-color: #f2f2f2;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  padding: 5px 5px 5px 30px;
+  background-repeat: no-repeat;
+  background-position: 8px 9px;
+  display: block;
+  margin-bottom: 10px;}
+input.change{
+  display:inline;}
+input:focus {
+  background-color: #ffffff;
+  border: 1px solid #b1e1e4;}
+input#submit {
+  color: #666663;
+  text-shadow: 0px 1px 1px #ffffff;
+  border-bottom: 2px solid #b2b2b2;
+  background-color: Lightblue;
+  text-align: center;}
+input#submit:hover {
+  color: #787878;
+  border: 1px dashed #a4a4a4;
+  border-top: 2px solid #b2b2b2;
+  background-color: tan;}
+</style>
+</head>
+<body>
+<form action="http://www.example.com/login.php">
+<div>
+<label for="username" class="title">Username:</label>
+<input type="text" name="username" size="15"
+maxlength="30" required="required" />
+</div>
+<div>
+<label for="email" class="title">E-mail:</label>
+<input type="text" name="email" size="15"
+maxlength="30" required="required" />
+</div>
+<div>
+<label for="age" class="title">Age: <input type="text" name="age" required="required" /></label>
+</div>
+Gender:
+<input class="change" id="female" type="radio" name="gender"
+value="f">
+<label for="female">Female</label>
+<input  class="change" id="male" type="radio" name="gender"
+value="m">
+<label for="male">Male</label><br />
+<label for="username">Date of birth:</label>
+<input type="date" name="birth" />
+<hr /> 
+<p>Please select your favorite genre:
+<br />
+<input  class="change" type="radio" name="genre" value="rock"
+checked="checked" /> Rock
+<input  class="change" type="radio" name="genre" value="pop" />
+Pop
+<input  class="change" type="radio" name="genre" value="jazz" />
+Jazz
+<input  class="change" type="radio" name="genre" value="afro pop" />
+Afro-pop
+<input  class="change" type="radio" name="genre" value="afrobeat" />
+Afrobeat
+</p>
+<hr />
+<p>Please select your favorite music service(s):
+<br />
+<input  class="change" type="checkbox" name="service"
+value="itunes" checked="checked" /> iTunes
+<input  class="change" type="checkbox" name="service"
+value="lastfm" /> Last.fm
+<input  class="change" type="checkbox" name="service"
+value="spotify" /> Spotify
+<input  class="change" type="checkbox" name="service"
+value="boomplay" /> Boomplay
+<input  class="change" type="checkbox" name="service"
+value="shazam" /> Shazam
+</p>
+<hr />
+<p>What device do you listen to music on?</p>
+<select name="devices">
+<option value="ipod">iPod</option>
+<option value="radio">Radio</option>
+<option value="computer">Computer</option>
+<option value= "television">Television</option>
+</select>
+<hr />
+<p>Do you play any of the following instruments?
+(You can select more than one option by holding
+down control on your PC.)</p>
+<select name="instruments" size="5"
+multiple="multiple">
+<option value="guitar" selected="selected">
+Guitar</option>
+<option value="drums">Drums</option>
+<option value="keyboard"
+selected="selected">Keyboard</option>
+<option value="bass">Bass</option>
+<option value="Violin">Violin</option>
+</select>
+<hr />
+<form action="http://www.example.com/upload.php"
+ method="post">
+<p>Upload your favourite song in MP3 format:</p>
+<input type="file" name="user-song" /><br />
+<input id="submit" type="submit" value="Upload" />
+</form>
+<hr />
+<form action="http://www.example.com/subscribe.php"
+ method="get">
+<p>Subscribe to our email list:</p>
+<input type="text" name="email" />
+<input id ="submit"type="submit" name="subscribe"
+value="Subscribe" />
+</form>
+<hr />
+<fieldset>
+<legend>Contact details</legend>
+<label>Twitter:<br />
+<input type="text" name="twitter" /></label><br />
+<label>Mobile:<br />
+<input type="text" name="mobile" /></label><br />
+<label>Telephone:<br />
+<input type="text" name="telephone" /></label>
+</fieldset>
+<p>
+<label for="hear-about">
+How did you hear about us?
+</label>
+<select name="referrer" id="hear-about">
+<option value="google">Google</option>
+<option value="friend">Friend</option>
+<option value="advert">Advert</option>
+<option value="other">Other</option>
+</select>
+</p>
+<p>
+  <form action="http://www.example.com/submit.php"
+  method="post">
+<input id="submit" type="submit" name="submit"
+value="Submit" />
+</form> 
+</p>
+</form>
+</body>
+<script lang="javascript" type="text/javascript">
+alert("Welcome!");
+</script>
+</html>
