@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Working with Arrays</title>
+</head>
+<body>
+
+<script type="text/javascript">
+// simple array created 
+var hobbies = ["sleeping", "eating", "sporting", "coding", "watching"];
+console.log(hobbies);
+
+	if(hobbies.indexOf("Coding") > -1){
+		console.log('I like Coding!!');
+	}
+
+if(hobbies.indexOf("Blacksmithing") > -1){
+
+		console.log('I like Coding!!');
+	}else{
+		console.log("Not in array"); 
+	}
+	
+				//OR
+/*if(hobbies.indexOf("Blacksmithing") === -1){
+
+		console.log('I like Coding!!');
+	}
+*/
+	
+	
+//removing an item from an array
+var hobbies = ["sleeping", "eating", "sporting", "coding", "watching"];
+console.log("I no longer enjoy", hobbies.pop());
+
+
+
+//Appending items to array
+var hobbies = ["sleeping", "eating", "sporting", "coding", "watching"];
+hobbies.push("archery");
+
+hobbies.shift();//removing the first   item
+
+hobbies.unshift("Playing");//replacing the item removed
+
+  
+//Looping through array
+hobbies.forEach(function (item, index){
+	console.log("I like", item, index);
+})
+
+
+//slice
+const values = [ 1, 2, 3, 4, 5];  
+
+const newValues = values.slice(1,4); 
+
+console.log(newValues); 
+
+
+
+//splice
+const value = [ 1, 2, 3, 4, 5, 6];
+	value.splice(3,2);
+
+console.log(value); 
+
+
+
+//splice used to insert new input to the array
+const number = [ 1, 2, 3, 4, 5, 6];
+	number.splice(3,0, "hello");
+
+console.log(number); 
+</script>
+</body>
+</html> 
