@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Text</title>
+</head>
+<body>
+<script lang="javascript" type="text/javascript">
+'use strict';
+
+
+function *process(){
+	yield;
+}
+	let so = process();
+	console.log(so.next());//value: undefined
+
+
+//* signifies the generator
+function *process1(){
+	yield 7000;
+	yield 7001;
+}
+	let it = process1();
+	console.log(it.next());
+
+
+//Generators completes the same way as the iterators
+function *process2(){
+	yield 7000;
+	yield 7001;
+}
+	let is = process2();
+	is.next();
+	is.next();
+	is.next();
+	console.log(is.next());
+
+
+//Infinitely yielding generators
+function *process3(){
+	let nextId = 2500;
+	while(true)
+		yield(nextId++ );
+}
+	let be = process3();
+	be.next();
+	console.log(be.next().value);
+	
+	
+//For-of loop with generators
+function *process4(){
+	let nxtId = 2500;
+	while(true)
+		yield(nxtId++ );
+}
+for(let id of process4()){
+	if(id > 2510) break;
+	console.log(id);
+}
+
+
+function *process5(){
+	let result = yield;
+	console.log(`Result is ${result}`);
+}
+	let am = process5();
+	am.next();
+	am.next(200);
+
+
+function *process6(){
+	let result = yield;
+	console.log(`Result is ${result}`);
+}
+	let aside = process6();
+	aside.next();
+	console.log(aside.next(400));
+
+
+//Delegating an iterator to a generators
+function *process7(){
+	yield 100;
+	yield* [5, 10, 20, 40];
+}
+
+let delegation = process7();
+
+console.log(delegation.next().value);
+console.log(delegation.next().value);
+console.log(delegation.next().value);
+console.log(delegation.next().value);
+console.log(delegation.next().value);
+console.log(delegation.next().value);
+
+
+</script>
+</body>
+</html> 
