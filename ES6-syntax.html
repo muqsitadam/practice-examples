@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Text</title>
+</head>
+<body>
+<script lang="javascript" type="text/javascript">
+'use strict';
+
+//Arrow functions.
+
+var getPrice = () => 5.99;
+console.log(typeof getPrice);
+
+var getPrice = () => 5.99;
+console.log(getPrice());
+ 
+//No need for parentheses when we are specifying one input
+var getPrice = count => count * 9;
+console.log(getPrice(10));
+
+//Need for parentheses when we are specifying more than one input
+var getPrice = (count,tax) => count * 9 * (1 + tax);
+console.log(getPrice(10,4));
+						//OR
+var getPrice = (count,tax) => {
+	var price = count * 9.0;
+	price *= (1 + tax);
+	return price; 
+}
+console.log(getPrice(10,4));
+
+//arrow functions for event listener
+document.addEventListener('click', () => console.log(this));
+
+document.addEventListener('click', function () {
+console.log(this)
+});
+
+
+//Default function parameter
+
+
+var getTotal = function(price, tax = price * 2 ){
+	console.log(price + tax);
+};
+getTotal(5.00);//15
+
+
+var baseTax = 2
+var getTotal = function(price, tax = price * baseTax ){
+	console.log(price + tax);
+};
+getTotal(5.00);
+
+//arguments that are passed to the function skips any that is default
+var getTotal = function(price, tax = 0.07){
+	console.log(arguments.length);
+};
+getTotal(5.00);
+
+
+/*Syntax error
+var getTotal = function(price = adjustment, adjustment = 0.07){
+	console.log(price + adjustment);
+};
+getTotal();
+*/ 
+
+var getTotal = function(price = adjustment, adjustment =1){
+	console.log(price + adjustment);
+};
+getTotal(5);  
+
+
+//Rest and Spread
+//... represent rest 
+var showCategories = function (productId, ...categories){
+	console.log(categories instanceof Array);
+};
+showCategories(123, 'search', 'advertising');
+
+
+var showCategories = function (productId, ...categories){
+	console.log(categories);
+};
+showCategories(123, 'search', 'advertising');
+
+
+var showCategories = function (productId, ...categories){
+	console.log(categories);
+};
+showCategories(123);
+
+
+var showCategories = function (productId, ...categories){
+};
+console.log(showCategories.length);
+
+
+var showCategories = function (productId, ...categories){
+	console.log(arguments.length);
+};
+showCategories(123);
+
+
+//rest parametr for dynamic function
+//ES6.htlm 85===111
+var showCategories =
+	new Function("...categories", "return categories;");
+console.log(showCategories('search', 'advertising'));
+
+
+//... also represent spread
+var prices = [10, 20,15];
+var newPriceArray = Math.max( ...prices);
+console.log(newPriceArray);
+
+
+var prices = [10, 20,15];
+var newPriceArray = [...prices];
+console.log(newPriceArray);//creates new array. 
+
+
+//just like ES5 we can also assume that an array has undefined values.
+var newPriceArray = Array(...[,,]);
+console.log(newPriceArray);
+				//OR
+var newPriceArray = [...[,,]];
+console.log(newPriceArray);
+
+
+//spread strecth out the characters of a string
+var maxCode = Math.max(..."543210");
+console.log(maxCode);
+
+//another example 
+var codeArray = ["A", ..."BCD", "E", ..."GH"];
+console.log(codeArray);
+
+
+//Object literal extension
+
+ 
+var price = 5.00, quantity = 30;
+var productView = {
+	price,
+	quantity
+};
+console.log(productView);
+
+
+var price = 5.00, quantity = 30;
+var productView = {
+	price,
+	quantity,
+	"calculate value"(){
+		return this.price * this.quantity
+	}
+};
+console.log(productView["calculate value"]());
+
+//You can put an entire expression between [] 
+
+
+var method = 'DoIt'
+var productView = {
+	[method + "-001"](){
+		console.log("Rewatch this abeg...!");
+	}
+};
+productView['DoIt-001']();
+
+
+//Dynamic properties use getters and setters
+var method = 'DoIt'
+var productView = {
+	get[method](){return true;},
+	set[method](value){}
+};
+console.log(productView.DoIt);
+
+//for...of loops
+
+var codes = "ABCDEF";
+var count = 0;
+for (var code of codes){
+	count++;
+};
+console.log(count);//should give you a value of 6
+
+
+//Octal and Binary literal
+//octal 0o10;
+var value = 0o10;
+console.log(value);
+		//SAME AS  ==  both still give the octal value
+var value = 0O40;
+console.log(value);
+
+
+//binary 0o10;
+var value = 0b10;
+console.log(value);
+		//SAME AS  ==  both still give the binary value
+var value = 0B10;
+console.log(value);
+
+
+
+//Template literal
+
+//It makes use of the character `` below the Esc key
+let invoiceNum = 1432;
+console.log(`Invoice Number: ${invoiceNum}`);
+
+let invoiceNumber = 1432;
+console.log(`Invoice Number: \${invoiceNumber}`);
+
+let invoiceeNum = '1432';
+console.log(`Invoice Number: ${"INV-" + invoiceeNum}`);
+
+
+let message = `A
+B
+C`;
+console.log(message);
+
+
+function processInvoice(segments){
+	console.log(segments);
+}
+processInvoice 	`Template` ;
+
+
+function processInvoicee(segments, ...values){
+	console.log(segments);
+	console.log(values);
+}
+let invoiceNo = '1432';
+let amount = '2000'
+processInvoicee `Invoice: ${invoiceNo} for ${amount}`;
+
+
+let salary  = ['30000', '50000', '65000'];
+let [low, average, high] = salary;
+console.log(average);
+
+
+let salary1  = ['30000', '50000'];
+let [low1, average1, high1] = salary1;
+console.log(high1);
+
+
+//skipping element
+let salary2  = ['30000', '50000', '65000'];
+let [low2, , high2] = salary2;
+console.log(high2);
+
+
+//Remember rest
+let salary3  = ['30000', '50000', '65000'];
+let [low3, ...remaining] = salary3;
+console.log(remaining);
+
+
+let salary4 = ['30000', '50000'];
+let [low4, average4, high4 = '65000'] = salary4;
+console.log(high4);
+
+//Nested arrays can be destructured
+ 
+ 
+//Object destruction..
+let income = {
+	low: '20200',
+	ave: '40000',
+	higher: "100000",
+};
+let { low: newLow, ave: newAverage, higher: newHigh } = income;
+console.log(newHigh);
+
+
+let income1 = {
+	low: '20200',
+	ave: '40000',
+	higher: "100000",
+};//Rememberthe parentheses during destructuring
+let newLow1, newAverage1, newHigh1;
+ ({ low: newLow, ave1: newAverage, higher: newHigh } = income);
+console.log(newHigh);
+
+
+//String destructuring
+let [maxCode1, minCode1] = 'AZ';
+console.log(`min:${minCode1} max:${maxCode1}`);
+
+
+</script>
+</body> 
+</html> 
